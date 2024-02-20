@@ -1,9 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>This is the title of the webpage!</title>
-  </head>
-  <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-  </body>
+
+<head>
+    <title>Waiting</title>
+    <style>
+        #ball {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border-radius: 10px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ball"></div>
+    <script>
+        const ball = document.getElementById("ball");
+        let x = 0;
+        let y = 0;
+        let xSpeed = 3;
+        let ySpeed = 3;
+
+        function animate() {
+            x += xSpeed;
+            y += ySpeed;
+
+            if (x + 20 > window.innerWidth || x < 0) {
+                xSpeed = -xSpeed;
+            }
+            if (y + 20 > window.innerHeight || y < 0) {
+                ySpeed = -ySpeed;
+            }
+            ball.style.left = x + "px";
+            ball.style.top = y + "px";
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+
 </html>
